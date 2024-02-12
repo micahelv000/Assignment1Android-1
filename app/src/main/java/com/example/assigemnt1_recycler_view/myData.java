@@ -24,7 +24,7 @@ public class myData {
             "154",
             "39",
             "8"};
-    static String[] DescrbcetionArray = {
+    static String[] DescriptionArray = {
             "Red is a former government agent turned high-profile criminal who surrenders to the FBI, offering to help them track down and apprehend other criminals on his \"blacklist.\" He is charismatic, enigmatic, and always seems to have a hidden agenda.",
             "Liz is an FBI profiler who becomes deeply involved with Red's operations. She has a complex relationship with Red, often questioning his motives and struggling with her own past, which becomes increasingly intertwined with Red's secrets.",
             "Ressler is an FBI special agent who initially distrusts Red's intentions but eventually becomes part of the team working with him. He is dedicated to his job and often serves as a moral compass within the task force.",
@@ -35,6 +35,18 @@ public class myData {
             "Dembe is Red's loyal and trusted confidant, serving as his bodyguard and right-hand man. He is highly skilled in combat and has a deep understanding of Red's motivations and history.",
             "Park is a rookie FBI agent who joins the task force with a background in profiling and interrogation. She is eager to prove herself and often finds herself in challenging situations as she adapts to the demands of her new role.",
             "Siya is an FBI agent who becomes part of the task force, bringing expertise in undercover operations and surveillance. She is resourceful and determined, willing to go to great lengths to achieve her objectives while remaining loyal to her team."};
+    static String[] ShortSummaryArray = {
+            "Ex-gov't agent aids FBI",
+            "FBI profiler vs Red",
+            "Agent joins Red's team",
+            "Operative in loyalty conflict",
+            "FBI leader upholds justice",
+            "Tech analyst aids FBI",
+            "Combat expert joins FBI",
+            "Red's loyal bodyguard",
+            "Rookie agent proves herself",
+            "Undercover FBI skilled agent"
+    };
 
     static Integer[] drawableArray = {
             R.drawable.p1,
@@ -48,5 +60,4 @@ public class myData {
             R.drawable.p9,
             R.drawable.p10};
 
-    static Integer[] id_ = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 }

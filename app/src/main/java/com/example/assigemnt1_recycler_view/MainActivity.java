@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<DataModel> filteredDataSet;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private CustomeAdapter adapter;
+    private CustomAdapter adapter;
     private EditText editTextSearch;
 
     @Override
@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
                     myData.nameArray[i],
                     myData.Number_of_EPS_Array[i],
                     myData.drawableArray[i],
-                    myData.id_[i],
-                    myData.DescrbcetionArray[i]
+                    myData.DescriptionArray[i],
+                    myData.ShortSummaryArray[i]
             ));
         }
         filteredDataSet.addAll(dataSet);
 
-        adapter = new CustomeAdapter(filteredDataSet, this); // Pass context here
+        adapter = new CustomAdapter(filteredDataSet, this); // Pass context here
         recyclerView.setAdapter(adapter);
     }
 

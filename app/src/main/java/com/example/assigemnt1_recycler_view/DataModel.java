@@ -1,30 +1,18 @@
 package com.example.assigemnt1_recycler_view;
 
 public class DataModel {
-    private String name;
-    private String version;
-    private int image; // Integer
-    private int id_;
-    private String desc;
+    private final String shortDesc;
+    private final String name;
+    private final String episodesNum;
+    private final int image; // Integer
+    private final String desc;
 
-    public DataModel(String name, String version, int image, int id_ , String desc) {
+    public DataModel(String name, String episodesNum, int image, String desc, String shortDesc) {
         this.name = name;
-        this.version = version;
+        this.episodesNum = episodesNum;
         this.image = image;
-        this.id_ = id_;
         this.desc = desc;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
+        this.shortDesc = shortDesc;
     }
 
     public String getName() {
@@ -33,15 +21,10 @@ public class DataModel {
     public String getDesc() {
         return desc;
     }
-
-    public String getVersion() {
-        return version;
+    public String getShortDesc() { return shortDesc; }
+    public String getEpisodesNum() {
+        return episodesNum;
     }
-
-    public int getId_() {
-        return id_;
-    }
-
     public int getImage() {
         return image;
     }

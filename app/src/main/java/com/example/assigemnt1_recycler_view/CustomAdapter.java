@@ -2,24 +2,22 @@ package com.example.assigemnt1_recycler_view;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MyViewHolder> {
-    private ArrayList<DataModel> dataSet;
-    private Context context;
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+    private final ArrayList<DataModel> dataSet;
+    private final Context context;
 
-    public CustomeAdapter(ArrayList<DataModel> dataSet, Context context) {
+    public CustomAdapter(ArrayList<DataModel> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
     }
@@ -40,27 +38,21 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MyViewHo
 
     @NonNull
     @Override
-    public CustomeAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardrow, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
 
-        return myViewHolder;
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomeAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
         final DataModel dataModel = dataSet.get(position);
         holder.textViewName.setText(dataModel.getName());
-        holder.textViewVersion.setText(dataModel.getVersion());
+        holder.textViewVersion.setText(dataModel.getShortDesc());
         holder.imageView.setImageResource(dataModel.getImage());
 
         // Set click listener for the item
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupWithInfo(dataModel);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> showPopupWithInfo(dataModel));
     }
 
     @Override
@@ -72,16 +64,11 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MyViewHo
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Full description");
         String message = "<b>Name:</b> " + dataModel.getName() +
-                "<br><b>Number of Episodes:</b> " + dataModel.getVersion() +
+                "<br><b>Number of episodes appeared in:</b> " + dataModel.getEpisodesNum() +
                 "<br><b>Description:</b><br>" + dataModel.getDesc();
 
-        builder.setMessage(Html.fromHtml(message));
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setMessage(HtmlCompat.fromHtml(message, HtmlCompat.FROM_HTML_MODE_COMPACT));
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
 
         AlertDialog dialog = builder.create();
         dialog.show();
